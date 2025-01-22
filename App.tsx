@@ -5,9 +5,21 @@ import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 export default function App() {
   const [name, setName] = useState<string>("a");
 
+  const [todoList, setTodoList] = useState([
+    { id: 1, title: "Learn React Native" },
+    { id: 2, title: "Learn React.js" },
+    { id: 3, title: "Watching netflix" },
+    { id: 4, title: "Watching youtube" },
+    { id: 5, title: "Watching bilibili" },
+    { id: 6, title: "Watching douyin" },
+    { id: 7, title: "Watching tiktok" },
+    { id: 8, title: "Serf Facebook" },
+    { id: 9, title: "Watching Instagram" },
+    { id: 110, title: "Watching xxx" },
+  ])
   return (
     <View style={styles.container}>
-      <View>
+      <View style={{ paddingBottom: 40 }}>
         <TextInput
           onChangeText={value => setName(value)}
           style={{
@@ -19,16 +31,29 @@ export default function App() {
         //keyboardType='numeric' 
         />
       </View>
-      <Text>
-        Hello world in React Native!
-        <Text style={styles.name}>I'm {name}</Text>
-      </Text>
-      <Button title='Add new' />
+      <Button title='Add new' onPress={() => alert("tap me")} />
+      <View>
+        {todoList.map(todo => {
+          return (
+            <Text style={styles.todo}>
+              {todo.title}
+            </Text>
+          )
+        })}
+      </View>
+
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  todo: {
+    fontSize: 30,
+    backgroundColor: "pink",
+    marginBottom: 20,
+    marginTop: 10,
+    padding: 10
+  },
   age: {
     fontSize: 20,
     color: 'orange'
