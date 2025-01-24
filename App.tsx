@@ -11,16 +11,23 @@ export default function App() {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
   const addTodo = (text: string) => {
-    alert(text);
     const todo = { id: randomMinMax(1, 100000000), title: text };
     setTodoList([...todoList, todo])
+  }
+
+  const deleteTodo = (id: number) => {
+    const newTodo = todoList.filter(todo => todo.id !== id)
+    setTodoList(newTodo);
   }
   return (
     <View style={styles.container}>
       <InputTodo
         addTodo={addTodo}
       />
-      <ListTodo todoList={todoList} />
+      <ListTodo
+        todoList={todoList}
+        deleteTodo={deleteTodo}
+      />
     </View>
   );
 }
