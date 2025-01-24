@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
   const [name, setName] = useState<string>("a");
@@ -32,15 +32,15 @@ export default function App() {
         />
       </View>
       <Button title='Add new' onPress={() => alert("tap me")} />
-      <View>
+      <ScrollView>
         {todoList.map(todo => {
           return (
-            <Text style={styles.todo}>
+            <Text key={todo.id} style={styles.todo}>
               {todo.title}
             </Text>
           )
         })}
-      </View>
+      </ScrollView>
 
     </View>
   );
